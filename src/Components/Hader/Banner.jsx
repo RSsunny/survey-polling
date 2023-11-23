@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div>
-      <h1>banner</h1>
+      <h1>banner lorem1000</h1>
     </div>
   );
 };
