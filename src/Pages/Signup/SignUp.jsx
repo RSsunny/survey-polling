@@ -30,8 +30,7 @@ const SignUp = () => {
     if (res.data.success) {
       const imageurl = res.data?.data.display_url;
       createUser(email, password)
-        .then((result) => {
-          console.log(result.user);
+        .then(() => {
           updateUser(data.name, imageurl).then().catch();
         })
         .catch((err) => {

@@ -10,10 +10,14 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
+
 const AuthProvider = ({ children }) => {
+  const axios = useAxiosPublic();
   const [user, setUser] = useState("");
   const [loding, setLoding] = useState(true);
 
@@ -44,11 +48,22 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentuser) => {
       setUser(currentuser);
       setLoding(false);
+      if (currentuser) {
+        const data = { email: currentuser?.email };
+        axios
+          .post("/api/v1/jwt", data)
+          .then((res) => {
+            localStorage.setItem("token", res.data);
+          })
+          .catch(() => {
+            localStorage.removeItem("token");
+          });
+      }
     });
     return () => {
       unSubscribe;
     };
-  }, []);
+  }, [axios]);
   const authInfo = {
     user,
     loding,
