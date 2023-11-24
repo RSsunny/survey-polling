@@ -4,9 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 
 import Icons from "../Icons/Icons";
+import useAuth from "../../Hooks/useAuth";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const locattion = useLocation();
+  const { user } = useAuth() || {};
+  console.log(user);
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
     window.scrollTimeout = setTimeout(() => {
@@ -50,14 +53,24 @@ const Navbar = () => {
           <Icons></Icons>
 
           {/* login */}
-          <Link to={"/signin"} className="avatar offline">
+          <Link
+            to={`${user ? "/deshbord/profile" : "/signin"} `}
+            className={`avatar ${user ? "online " : "offline"} `}
+          >
             <div className="w-10 rounded-full ">
-              <FaCircleUser className="w-full text-4xl " />
+              {user ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <FaCircleUser className="w-full text-4xl " />
+              )}
             </div>
           </Link>
 
           {/* deshbord */}
-          <Link className="bg-primary_Colors text-white font-medium font-cinzel  px-4 py-2  rounded-md">
+          <Link
+            to={"deshbord"}
+            className="bg-primary_Colors text-white font-medium font-cinzel  px-4 py-2  rounded-md"
+          >
             Deshbord
           </Link>
         </div>

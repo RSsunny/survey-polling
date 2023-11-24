@@ -3,14 +3,34 @@ import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 import loginimage from "../../assets/Images/login.jpg";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 const Signin = () => {
+  const { userlogin, midealogin } = useAuth();
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    userlogin(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const dandleMidea = (midea) => {
+    midea()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="  h-screen w-full  grid grid-cols-12 overflow-hidden">
       <div className="col-span-12 md:col-span-6 lg:col-span-4 border-r-2  p-5 md:p-10">
@@ -66,7 +86,10 @@ const Signin = () => {
           <div className="border-2 flex-1"></div>
         </div>
         <div className="flex flex-col gap-5">
-          <div className="flex items-center gap-5 border px-4 py-2 text-xl font-bold rounded-md hover:bg-primary_Colors  hover:text-white duration-500 cursor-pointer w-full text-center justify-center">
+          <div
+            onClick={() => dandleMidea(midealogin)}
+            className="flex items-center gap-5 border px-4 py-2 text-xl font-bold rounded-md hover:bg-primary_Colors  hover:text-white duration-500 cursor-pointer w-full text-center justify-center"
+          >
             <FaGoogle className=" text-3xl"></FaGoogle>
             <h1>Google</h1>
           </div>

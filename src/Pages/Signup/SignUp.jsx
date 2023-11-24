@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 import loginimage from "../../assets/Images/login.jpg";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+
+import axios from "axios";
+const image_hosting_ky = import.meta.env.VITE_HOSTING_IMGBB_KEY;
+const img_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ky}`;
 const SignUp = () => {
-  const { createUser, user } = useAuth();
-  console.log(user.email);
+  const { createUser, updateUser } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -16,13 +19,25 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     const email = data?.email;
     const password = data?.password;
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const image = { image: data.image[0] };
+
+    const res = await axios.post(img_hosting_API, image, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.success) {
+      const imageurl = res.data?.data.display_url;
+      createUser(email, password)
+        .then((result) => {
+          console.log(result.user);
+          updateUser(data.name, imageurl).then().catch();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div className="  h-screen w-full  grid grid-cols-12 overflow-hidden">
@@ -81,6 +96,11 @@ const SignUp = () => {
             type="password"
             className="outline-none border border-black w-full mb-5 p-3 rounded-md "
           ></input>
+          <input
+            {...register("image", { required: true })}
+            type="file"
+            className="file-input  file-input-bordered border-black w-full mb-5 p-3 rounded-md outline-none "
+          />
           <input
             className="w-full text-xl font-cinzel font-bold bg-primary_Colors p-3 rounded-full text-white hover:bg-opacity-90 cursor-pointer"
             type="submit"
