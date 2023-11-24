@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { BsFillTriangleFill } from "react-icons/bs";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -46,15 +47,24 @@ const Slider = () => {
               className="hidden  bottom-10 absolute right-10 z-30 md:flex gap-5 
             "
             >
-              <button className="px-4 py-3 rounded-full bg-white text-black hover:bg-primary_Colors hover:text-white">
-                product design
-              </button>
-              <button className="px-4 py-3 rounded-full bg-white text-black hover:bg-primary_Colors hover:text-white">
-                product design
-              </button>
-              <button className="px-4 py-3 rounded-full bg-white text-black hover:bg-primary_Colors hover:text-white">
-                product design
-              </button>
+              <div className="relative hover:bg-primary_Colors hover:text-primary_Colors bg-white rounded-full group-hover:text-primary_Colors transition ease-linear duration-500">
+                <button className="px-4 py-3   text-black hover:text-white ">
+                  product design
+                </button>
+                <BsFillTriangleFill className="absolute -top-3 left-8 text-2xl -z-10  " />
+              </div>
+              <div className="relative hover:bg-primary_Colors hover:text-primary_Colors bg-white rounded-full group-hover:text-primary_Colors transition ease-linear duration-500">
+                <button className="px-4 py-3   text-black hover:text-white ">
+                  product design
+                </button>
+                <BsFillTriangleFill className="absolute -top-3 left-8 text-2xl -z-10  text-transparent" />
+              </div>
+              <div className="relative hover:bg-primary_Colors hover:text-primary_Colors bg-white rounded-full group-hover:text-primary_Colors transition ease-linear duration-500">
+                <button className="px-4 py-3   text-black hover:text-white ">
+                  product design
+                </button>
+                <BsFillTriangleFill className="absolute -top-3 left-8 text-2xl -z-10  text-transparent" />
+              </div>
             </div>
           </div>
         </SwiperSlide>

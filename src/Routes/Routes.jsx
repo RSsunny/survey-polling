@@ -7,6 +7,7 @@ import Deshbord from "../Deshbord/Deshbord";
 import UserHome from "../Deshbord/User/UserHome";
 import ProuserHome from "../Deshbord/Pro User/ProuserHome";
 import Profile from "../Deshbord/Profile";
+import UserStatics from "../Deshbord/User/UserStatics";
 
 const Routes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const Routes = createBrowserRouter([
       {
         path: "userhome",
         element: <UserHome></UserHome>,
+      },
+      {
+        path: "statics",
+        element: <UserStatics></UserStatics>,
       },
       // Pro user deshbord
       {

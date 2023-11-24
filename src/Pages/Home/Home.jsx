@@ -1,5 +1,4 @@
 import Banner from "../../Components/Hader/Banner";
-
 const Home = () => {
   return (
     <div>
@@ -7,5 +6,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

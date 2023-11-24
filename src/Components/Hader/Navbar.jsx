@@ -9,7 +9,7 @@ const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const locattion = useLocation();
   const { user } = useAuth() || {};
-  console.log(user);
+
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
     window.scrollTimeout = setTimeout(() => {
@@ -68,7 +68,7 @@ const Navbar = () => {
 
           {/* deshbord */}
           <Link
-            to={"deshbord"}
+            to={"/deshbord/statics"}
             className="bg-primary_Colors text-white font-medium font-cinzel  px-4 py-2  rounded-md"
           >
             Deshbord

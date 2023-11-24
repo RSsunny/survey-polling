@@ -9,7 +9,7 @@ const NavList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-primary_Colors border-b  "
+            ? "text-primary_Colors border-b border-primary_Colors  "
             : ""
         }
       >
@@ -18,7 +18,11 @@ const NavList = () => {
       <NavLink
         to="/surveys"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "text-primary_Colors border-b" : ""
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : ""
         }
       >
         Surveys
@@ -26,7 +30,11 @@ const NavList = () => {
       <NavLink
         to="/about"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "text-primary_Colors border-b" : ""
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : ""
         }
       >
         About Us
@@ -34,7 +42,11 @@ const NavList = () => {
       <NavLink
         to="/contact"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "text-primary_Colors border-b" : ""
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : ""
         }
       >
         Contact Us
