@@ -4,8 +4,10 @@ import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import loginimage from "../../assets/Images/login.jpg";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Signin = () => {
   const { userlogin, midealogin } = useAuth();
+  const axios = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -26,6 +28,19 @@ const Signin = () => {
     midea()
       .then((result) => {
         console.log(result.user);
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          roll: "user",
+        };
+        axios
+          .post("/api/v1/users", userInfo)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);

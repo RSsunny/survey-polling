@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();

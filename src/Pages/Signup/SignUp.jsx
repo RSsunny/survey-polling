@@ -4,11 +4,12 @@ import loginimage from "../../assets/Images/login.jpg";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
-import axios from "axios";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const image_hosting_ky = import.meta.env.VITE_HOSTING_IMGBB_KEY;
 const img_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ky}`;
 const SignUp = () => {
   const { createUser, updateUser } = useAuth();
+  const axios = useAxiosPublic();
 
   const {
     register,
@@ -31,7 +32,23 @@ const SignUp = () => {
       const imageurl = res.data?.data.display_url;
       createUser(email, password)
         .then(() => {
-          updateUser(data.name, imageurl).then().catch();
+          updateUser(data.name, imageurl)
+            .then(() => {
+              const userinfo = {
+                name: data.name,
+                email: email,
+                roll: "user",
+              };
+              axios
+                .post("/api/v1/users", userinfo)
+                .then((res) => {
+                  console.log(res.data);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+            .catch();
         })
         .catch((err) => {
           console.log(err);
