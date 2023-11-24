@@ -13,7 +13,7 @@ import auth from "../Firebase/Firebase";
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [loding, setLoding] = useState(true);
 
   const createUser = (email, password) => {

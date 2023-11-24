@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div className="bg-base-200">
       <Container>
-        <footer className="footer p-10  text-base-content">
-          <aside>
-            <h1 className="text-4xl font-cinzel font-bold  ">
+        <footer className="footer p-5 md:p-10 grid-cols-2 md:grid  lg:grid-cols-6  text-base-content">
+          <aside className="mr-10">
+            <h1 className="text-2xl md:text-4xl font-cinzel font-bold  ">
               Sur<span className="text-primary_Colors text-5xl">v</span>ey
             </h1>
             <p>
@@ -85,7 +85,7 @@ const Footer = () => {
             </a>
           </nav>
         </footer>
-        <div className="text-center text-3xl  mx-auto w-[400px] text-primary_Colors my-10">
+        <div className="text-center text-3xl  mx-auto  text-primary_Colors my-10">
           <Icons></Icons>
         </div>
         <div className="footer footer-center p-4  text-base-content border-t">

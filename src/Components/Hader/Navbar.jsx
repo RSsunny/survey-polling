@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import NavList from "./NavList";
 import { Link, useLocation } from "react-router-dom";
+import { FaCircleUser } from "react-icons/fa6";
+
 import Icons from "../Icons/Icons";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
@@ -34,17 +36,25 @@ const Navbar = () => {
       }`}
     >
       <div className="flex justify-between items-center md:px-10  lg:px-20">
-        <h1 className="text-4xl font-cinzel font-bold  ">
-          Sur<span className="text-primary_Colors text-5xl">v</span>ey
+        <h1 className="text-2xl md:text-4xl font-cinzel font-bold  m-5 md:m-0">
+          Sur<span className="text-primary_Colors text-3xl md:text-5xl">v</span>
+          ey
         </h1>
-        <div className="flex  gap-5 text-sm font-medium">
+        <div className="md:flex  gap-5 text-sm font-medium hidden ">
           {/* navLink */}
           <NavList></NavList>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-5">
           {/* Icon social */}
 
           <Icons></Icons>
+
+          {/* login */}
+          <Link to={"/signin"} className="avatar offline">
+            <div className="w-10 rounded-full ">
+              <FaCircleUser className="w-full text-4xl " />
+            </div>
+          </Link>
 
           {/* deshbord */}
           <Link className="bg-primary_Colors text-white font-medium font-cinzel  px-4 py-2  rounded-md">
