@@ -1,5 +1,5 @@
 import Container from "../../Shared/Container";
-import Icons from "../Icons/Icons";
+import Icons from "../../Utility/Icons";
 
 const Footer = () => {
   return (

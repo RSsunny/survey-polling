@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import loginimage from "../../assets/Images/login.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
@@ -10,6 +10,8 @@ const img_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ky}`
 const SignUp = () => {
   const { createUser, updateUser } = useAuth();
   const axios = useAxiosPublic();
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -47,6 +49,7 @@ const SignUp = () => {
                 .catch((err) => {
                   console.log(err);
                 });
+              navigate("/");
             })
             .catch();
         })

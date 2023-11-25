@@ -3,7 +3,7 @@ import NavList from "./NavList";
 import { Link, useLocation } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 
-import Icons from "../Icons/Icons";
+import Icons from "../../Utility/Icons";
 import useAuth from "../../Hooks/useAuth";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);

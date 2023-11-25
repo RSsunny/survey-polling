@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentuser);
       setLoding(false);
       if (currentuser) {
-        const data = { email: currentuser?.email };
+        const data = { email: currentuser?.email } || { email: user.email };
         axios
           .post("/api/v1/jwt", data)
           .then((res) => {
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unSubscribe;
     };
-  }, [axios]);
+  }, [axios, user?.email]);
   const authInfo = {
     user,
     loding,

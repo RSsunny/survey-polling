@@ -8,7 +8,7 @@ const Banner = () => {
         style={{ backgroundImage: `url("${banner}")` }}
       >
         <div className="flex justify-center items-center absolute  inset-0">
-          <div className="md:w-[800px] lg:w-[1000px] md:h-[400px] lg:h-[500px]   border-white rounded-3xl mb-10 overflow-hidden">
+          <div className="md:w-[800px] lg:w-[1100px] md:h-[400px] lg:h-[550px]   border-white rounded-3xl mb-20 overflow-hidden">
             <Slider></Slider>
           </div>
         </div>

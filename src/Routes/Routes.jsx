@@ -8,6 +8,10 @@ import UserHome from "../Deshbord/User/UserHome";
 import ProuserHome from "../Deshbord/Pro User/ProuserHome";
 import Profile from "../Deshbord/Profile";
 import UserStatics from "../Deshbord/User/UserStatics";
+import BrowseSurveys from "../Deshbord/User/BrowseSurveys";
+import UserResponses from "../Deshbord/User/UserResponses";
+import UserSettings from "../Deshbord/User/UserSettings";
+import PrivateRoute from "../Private/PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -22,20 +26,33 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/deshbord",
-    element: <Deshbord></Deshbord>,
+    element: (
+      <PrivateRoute>
+        <Deshbord></Deshbord>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
         element: <Profile></Profile>,
       },
       // user Deshbord
-      {
-        path: "userhome",
-        element: <UserHome></UserHome>,
-      },
+
       {
         path: "statics",
         element: <UserStatics></UserStatics>,
+      },
+      {
+        path: "browseSurveys",
+        element: <BrowseSurveys></BrowseSurveys>,
+      },
+      {
+        path: "userresponses",
+        element: <UserResponses></UserResponses>,
+      },
+      {
+        path: "usersettings",
+        element: <UserSettings></UserSettings>,
       },
       // Pro user deshbord
       {

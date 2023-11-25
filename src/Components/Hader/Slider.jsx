@@ -26,7 +26,7 @@ const Slider = () => {
       >
         <SwiperSlide className="">
           <div
-            className="bg-center bg-cover  h-[400px] lg:h-[500px] w-full font-bold relative"
+            className="bg-center bg-cover  h-[400px] lg:h-[550px] w-full font-bold relative"
             style={{ backgroundImage: `url("${slider1}")` }}
           >
             <div className="absolute inset-0 z-10  bg-black opacity-50"></div>

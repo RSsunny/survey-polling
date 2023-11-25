@@ -2,12 +2,14 @@ import { useForm } from "react-hook-form";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 import loginimage from "../../assets/Images/login.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Signin = () => {
   const { userlogin, midealogin } = useAuth();
   const axios = useAxiosPublic();
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,8 +18,9 @@ const Signin = () => {
   } = useForm();
   const onSubmit = (data) => {
     userlogin(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        // console.log(result.user);
+        navigate(location.state.from ? location.state.from : "/");
       })
       .catch((err) => {
         console.log(err);
@@ -35,8 +38,9 @@ const Signin = () => {
         };
         axios
           .post("/api/v1/users", userInfo)
-          .then((res) => {
-            console.log(res.data);
+          .then(() => {
+            // console.log(res.data);
+            navigate(location.state.from ? location.state.from : "/");
           })
           .catch((err) => {
             console.log(err);
