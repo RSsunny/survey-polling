@@ -5,6 +5,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 import Icons from "../../Utility/Icons";
 import useAuth from "../../Hooks/useAuth";
+import Dawer from "../Drawer/Dawer";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const locattion = useLocation();
@@ -75,6 +76,9 @@ const Navbar = () => {
           >
             Deshbord
           </Link>
+        </div>
+        <div className="md:hidden">
+          <Dawer></Dawer>
         </div>
       </div>
     </div>

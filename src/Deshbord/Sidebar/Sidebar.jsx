@@ -17,8 +17,8 @@ const Sidebar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <IoHome className="text-2xl " /> Home
@@ -42,8 +42,8 @@ const Sidebar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <CgProfile className="text-2xl " /> Profile

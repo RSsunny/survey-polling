@@ -3,6 +3,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { RiSurveyLine } from "react-icons/ri";
 import { TfiStatsUp } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
+import { FaRegAddressBook } from "react-icons/fa6";
 
 const SurveyerList = () => {
   return (
@@ -13,8 +14,8 @@ const SurveyerList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <TfiStatsUp className="text-2xl " /> Statics
@@ -25,12 +26,25 @@ const SurveyerList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <RiSurveyLine className="text-2xl " />
         My Surveys
+      </NavLink>
+      <NavLink
+        to={"/deshbord/addsurvey"}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
+        }
+      >
+        <FaRegAddressBook className="text-2xl " />
+        Add Survey
       </NavLink>
       <NavLink
         to={"/deshbord/surveyerresults"}
@@ -38,8 +52,8 @@ const SurveyerList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <BiLogoSquarespace className="text-2xl " /> Results
@@ -50,8 +64,8 @@ const SurveyerList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border py-2 bg-gray-200 lg:rounded-md"
-            : "flex items-center gap-10  border-y pl-5 lg:pl-20 lg:border  py-2 lg:rounded-md"
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
         }
       >
         <IoSettingsSharp className="text-2xl " /> Settings

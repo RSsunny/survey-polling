@@ -16,8 +16,8 @@ const Banner = () => {
       </div>
       {/* mobile  slider*/}
 
-      <div className="md:hidden h-[400px] w-full  flex justify-center items-center relative z-10 -mt-12  p-2">
-        <div className=" h-[400px] w-full  border-white rounded-3xl mb-10 overflow-hidden">
+      <div className="md:hidden h-screen md:h-[400px] w-full  flex justify-center items-center relative z-10 -mt-12  p-2">
+        <div className="h-screen md:h-[400px] w-full  border-white rounded-3xl mb-10 overflow-hidden">
           <Slider></Slider>
         </div>
       </div>

@@ -1,5 +1,10 @@
 const Profile = () => {
-  return <div></div>;
+  return (
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+      recusandae corporis maiores?
+    </div>
+  );
 };
 
 export default Profile;

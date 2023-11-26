@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
-const Logout = () => {
+const Logout = ({ utiClass }) => {
   const { logOut } = useAuth();
   const navigate = useNavigate();
   const handleLogOut = () => {
@@ -15,7 +15,9 @@ const Logout = () => {
     <div className="w-full text-center">
       <button
         onClick={handleLogOut}
-        className="border px-6 py-2 mt-20 rounded-full text-xl font-cinzel font-bold hover:bg-primary_Colors hover:text-white transition ease-linear duration-500"
+        className={`${
+          utiClass ? utiClass : "mt-20 "
+        } border px-6 py-2 rounded-full text-xl font-cinzel font-bold hover:bg-primary_Colors hover:text-white transition ease-linear duration-500`}
       >
         Sign Out
       </button>

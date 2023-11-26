@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 const PaymentCard = () => {
   const { user } = useAuth() || {};
+  const navigate = useNavigate();
 
   const axios = useAxiosPublic();
   const stripe = useStripe();
@@ -67,7 +69,8 @@ const PaymentCard = () => {
           console.log(err);
         });
       setCaerdError("");
-      setSuccess("pament success full");
+      setSuccess("payment success full");
+      navigate("/deshbord/profile");
     } else {
       console.log(confirmError);
     }

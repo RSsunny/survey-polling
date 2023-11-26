@@ -13,6 +13,8 @@ import UserSettings from "../Deshbord/User/UserSettings";
 import PrivateRoute from "../Private/PrivateRoute";
 import Subscribe from "../Pages/Subscribe/Subscribe";
 import Payment from "../Pages/Subscribe/Payment";
+import Surveys from "../Pages/Surveys/Surveys";
+import AddSurvey from "../Deshbord/Surveyor/AddSurvey";
 
 const Routes = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const Routes = createBrowserRouter([
             <Payment></Payment>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "surveys",
+        element: <Surveys></Surveys>,
       },
     ],
   },
@@ -68,6 +74,12 @@ const Routes = createBrowserRouter([
         element: <UserSettings></UserSettings>,
       },
       // Pro user deshbord
+
+      // surveyor desbord
+      {
+        path: "addsurvey",
+        element: <AddSurvey></AddSurvey>,
+      },
     ],
   },
   // User Authentication
