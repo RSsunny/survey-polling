@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import DeshbordList from "./DeshbordList";
 import Logout from "../Utility/Logout";
 import Logo from "../Utility/Logo";
 import Icons from "../Utility/Icons";
 import useUserRoll from "../Hooks/useUserRoll";
+import Sidebar from "./Sidebar/Sidebar";
 
-const Deshbord = () => {
+const Dashbord = () => {
   const { roll } = useUserRoll();
 
   return (
@@ -15,7 +15,7 @@ const Deshbord = () => {
         <Logo pro={roll === "user" ? false : true}></Logo>
 
         {/* deshbord sidver link list */}
-        <DeshbordList></DeshbordList>
+        <Sidebar></Sidebar>
 
         {/* SignOut */}
         <Logout></Logout>
@@ -32,4 +32,4 @@ const Deshbord = () => {
   );
 };
 
-export default Deshbord;
+export default Dashbord;

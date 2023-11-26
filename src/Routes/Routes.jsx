@@ -3,10 +3,9 @@ import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Signin from "../Pages/Signin/Signin";
 import SignUp from "../Pages/Signup/SignUp";
-import Deshbord from "../Deshbord/Deshbord";
-import UserHome from "../Deshbord/User/UserHome";
-import ProuserHome from "../Deshbord/Pro User/ProuserHome";
-import Profile from "../Deshbord/Profile";
+import Deshbord from "../Deshbord/Dashbord";
+
+import Profile from "../Deshbord/Sidebar List/Profile";
 import UserStatics from "../Deshbord/User/UserStatics";
 import BrowseSurveys from "../Deshbord/User/BrowseSurveys";
 import UserResponses from "../Deshbord/User/UserResponses";
@@ -69,10 +68,6 @@ const Routes = createBrowserRouter([
         element: <UserSettings></UserSettings>,
       },
       // Pro user deshbord
-      {
-        path: "prouserHome",
-        element: <ProuserHome></ProuserHome>,
-      },
     ],
   },
   // User Authentication

@@ -44,7 +44,11 @@ const Slider = () => {
               </p>
               <div className="inline-block">
                 <Link
-                  to={roll === "pro user" ? "/deshbord/statics" : "/subscribe"}
+                  to={
+                    roll === "user" || roll == ""
+                      ? "/subscribe"
+                      : "/deshbord/profile"
+                  }
                   className="bg-primary_Colors p-4 rounded-full mt-8 hover:scale-110 transition uppercase flex items-center gap-3 "
                 >
                   pro user <FaArrowRight />
