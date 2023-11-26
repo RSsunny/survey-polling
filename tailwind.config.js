@@ -21,6 +21,7 @@ export default {
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
+      green: "#04F000",
     },
   },
   plugins: [require("daisyui")],

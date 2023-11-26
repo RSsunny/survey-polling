@@ -7,8 +7,11 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import slider1 from "../../assets/Images/banner.png";
 import { FaArrowRight } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
+import useUserRoll from "../../Hooks/useUserRoll";
 const Slider = () => {
+  const { roll } = useUserRoll();
+  console.log(roll);
   return (
     <div className="w-full h-full z-50 cursor-pointer relative">
       <Swiper
@@ -39,9 +42,14 @@ const Slider = () => {
                 Since 1985 Reed has pioneered specialist recruitment, sourcing
                 Knowledge
               </p>
-              <button className="bg-primary_Colors p-4 rounded-full mt-8 hover:scale-110 transition uppercase flex items-center gap-3">
-                pro user <FaArrowRight />
-              </button>
+              <div className="inline-block">
+                <Link
+                  to={roll === "pro user" ? "/deshbord/statics" : "/subscribe"}
+                  className="bg-primary_Colors p-4 rounded-full mt-8 hover:scale-110 transition uppercase flex items-center gap-3 "
+                >
+                  pro user <FaArrowRight />
+                </Link>
+              </div>
             </div>
             <div
               className="hidden  bottom-10 absolute right-10 z-30 md:flex gap-5 

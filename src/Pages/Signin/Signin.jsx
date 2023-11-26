@@ -10,6 +10,7 @@ const Signin = () => {
   const axios = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
+  console.log(location);
   const {
     register,
     handleSubmit,
@@ -20,7 +21,7 @@ const Signin = () => {
     userlogin(data.email, data.password)
       .then(() => {
         // console.log(result.user);
-        navigate(location.state.from ? location.state.from : "/");
+        navigate(location.state?.from ? location.state?.from : "/");
       })
       .catch((err) => {
         console.log(err);
@@ -36,11 +37,12 @@ const Signin = () => {
           email: result?.user?.email,
           roll: "user",
         };
+        console.log(userInfo);
         axios
           .post("/api/v1/users", userInfo)
           .then(() => {
             // console.log(res.data);
-            navigate(location.state.from ? location.state.from : "/");
+            navigate(location.state?.from ? location.state?.from : "/");
           })
           .catch((err) => {
             console.log(err);

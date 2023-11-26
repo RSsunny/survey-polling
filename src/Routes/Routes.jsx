@@ -12,6 +12,8 @@ import BrowseSurveys from "../Deshbord/User/BrowseSurveys";
 import UserResponses from "../Deshbord/User/UserResponses";
 import UserSettings from "../Deshbord/User/UserSettings";
 import PrivateRoute from "../Private/PrivateRoute";
+import Subscribe from "../Pages/Subscribe/Subscribe";
+import Payment from "../Pages/Subscribe/Payment";
 
 const Routes = createBrowserRouter([
   {
@@ -21,6 +23,18 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "subscribe",
+        element: <Subscribe></Subscribe>,
+      },
+      {
+        path: "payment",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
       },
     ],
   },

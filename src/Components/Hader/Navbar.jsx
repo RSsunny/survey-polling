@@ -31,11 +31,13 @@ const Navbar = () => {
   return (
     <div
       className={` md:py-5  w-full z-50  ${
-        locattion?.pathname === "/" && "text-white"
-      }   duration-1000 ease-linear    ${
-        issticky
-          ? "sticky bg-gray-200 bg-white bg-opacity-10   top-0  "
-          : "sticky"
+        locattion?.pathname === "/" ||
+        locattion?.pathname === "/subscribe" ||
+        locattion?.pathname === "/payment"
+          ? "text-white"
+          : ""
+      }  duration-1000 ease-linear    ${
+        issticky ? "sticky bg-gray-200 bg-opacity-10   top-0  " : "sticky"
       }`}
     >
       <div className="flex justify-between items-center md:px-10  lg:px-20">
