@@ -23,8 +23,12 @@ const Dawer = () => {
           className="text-4xl mr-5 text-primary_Colors"
           onClick={openDrawer}
         ></IoMenu>
-        <Drawer open={open} onClose={closeDrawer} className="p-4">
-          <div className="mb-6 flex items-center justify-between">
+        <Drawer
+          open={open}
+          onClose={closeDrawer}
+          className="p-4 overflow-y-scroll overflow-x-hidden "
+        >
+          <div className="mb-6 flex items-center justify-between ">
             <Logo
               color={"text-black"}
               pro={roll === "user" ? false : true}
@@ -58,11 +62,11 @@ const Dawer = () => {
               )}
             </div>
           </Link>
-          <div className="text-center flex flex-col gap-5  lg:px-10 mt-10 font-bold text-black">
+          <div className="text-center flex flex-col   lg:px-10 mt-10 font-bold text-black">
             <Sidebar></Sidebar>
           </div>
-          <Logout utiClass={"mt-5"}></Logout>
-          <div className="absolute bottom-5 w-full ">
+          <Logout utiClass={"mt-10"}></Logout>
+          <div className="mt-32 w-full ">
             <Icons></Icons>
           </div>
         </Drawer>

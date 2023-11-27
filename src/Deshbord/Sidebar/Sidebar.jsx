@@ -6,6 +6,7 @@ import UserList from "../Sidebar List/userList";
 import ProUserList from "../Sidebar List/ProUserList";
 import AdminList from "../Sidebar List/AdminList";
 import SurveyerList from "../Sidebar List/SurveyerList";
+import { SiSurveymonkey } from "react-icons/si";
 
 const Sidebar = () => {
   const { roll } = useUserRoll();
@@ -22,6 +23,18 @@ const Sidebar = () => {
         }
       >
         <IoHome className="text-2xl " /> Home
+      </NavLink>
+      <NavLink
+        to={"/surveys"}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border py-2 bg-gray-200 lg:rounded-md"
+            : "flex items-center gap-10  border-y pl-5 lg:pl-10 lg:border  py-2 lg:rounded-md"
+        }
+      >
+        <SiSurveymonkey className="text-2xl " /> Surveys
       </NavLink>
 
       {/* regular user */}

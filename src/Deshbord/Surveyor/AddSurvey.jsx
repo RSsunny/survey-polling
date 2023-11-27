@@ -7,12 +7,15 @@ import { TbListDetails } from "react-icons/tb";
 import { FaImage } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
 
 const img_hosting_key = import.meta.env.VITE_HOSTING_IMGBB_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 const AddSurvey = () => {
   const axios = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+  console.log(user);
 
   const {
     register,
@@ -32,13 +35,18 @@ const AddSurvey = () => {
     const image = imgRes?.data?.data.display_url;
 
     const surveyinfo = {
-      title: data?.taile,
+      title: data?.title,
+      email: user?.email,
       discription: data?.description,
       summary: data?.summary,
       date: data?.date,
       expired_date: data?.expired_date,
       category: data?.category,
       image,
+      author: {
+        author_image: user.photoURL,
+        author_name: user.displayName,
+      },
     };
     const res = await axios.post("/api/v1/survey", surveyinfo);
     console.log(res.data);
@@ -51,7 +59,7 @@ const AddSurvey = () => {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border h-screen md:mx-5 lg:mx-20 p-10 rounded-xl "
+        className="border h-screen md:mx-5 lg:mx-20 p-10 rounded-xl mb-10"
       >
         <div className="flex items-center gap-32 my-5">
           <div className="flex items-center gap-5  font-bold font-cinzel">

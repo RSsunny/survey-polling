@@ -15,6 +15,8 @@ import Subscribe from "../Pages/Subscribe/Subscribe";
 import Payment from "../Pages/Subscribe/Payment";
 import Surveys from "../Pages/Surveys/Surveys";
 import AddSurvey from "../Deshbord/Surveyor/AddSurvey";
+import MySurveys from "../Deshbord/Surveyor/MySurveys";
+import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -40,6 +42,11 @@ const Routes = createBrowserRouter([
       {
         path: "surveys",
         element: <Surveys></Surveys>,
+      },
+      {
+        path: "surveydetails/:id",
+
+        element: <SurveyDetails></SurveyDetails>,
       },
     ],
   },
@@ -79,6 +86,10 @@ const Routes = createBrowserRouter([
       {
         path: "addsurvey",
         element: <AddSurvey></AddSurvey>,
+      },
+      {
+        path: "surveyersurveys",
+        element: <MySurveys></MySurveys>,
       },
     ],
   },
