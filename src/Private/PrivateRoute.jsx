@@ -1,12 +1,13 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Skeleton from "../Utility/Skeleton";
 
 const PrivateRoute = ({ children }) => {
   const { user, loding } = useAuth();
   const location = useLocation();
 
   if (loding) {
-    return <h1>loding</h1>;
+    return <Skeleton></Skeleton>;
   }
   if (user) {
     return children;

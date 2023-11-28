@@ -5,12 +5,17 @@ import loginimage from "../../assets/Images/login.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { FiRefreshCcw } from "react-icons/fi";
+import { useState } from "react";
 const Signin = () => {
   const { userlogin, midealogin } = useAuth();
+  const [lodingIcon, setLodingIcon] = useState(false);
+  const [lodingIconMidea, setLodingIconMidea] = useState(false);
+
   const axios = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+
   const {
     register,
     handleSubmit,
@@ -18,17 +23,21 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    setLodingIcon(true);
     userlogin(data.email, data.password)
       .then(() => {
         // console.log(result.user);
+        setLodingIcon(false);
         navigate(location.state?.from ? location.state?.from : "/");
       })
       .catch((err) => {
         console.log(err);
+        setLodingIcon(false);
       });
   };
 
   const dandleMidea = (midea) => {
+    setLodingIconMidea(true);
     midea()
       .then((result) => {
         console.log(result.user);
@@ -42,9 +51,11 @@ const Signin = () => {
           .post("/api/v1/users", userInfo)
           .then(() => {
             // console.log(res.data);
+            setLodingIconMidea(false);
             navigate(location.state?.from ? location.state?.from : "/");
           })
           .catch((err) => {
+            setLodingIconMidea(false);
             console.log(err);
           });
       })
@@ -52,6 +63,7 @@ const Signin = () => {
         console.log(err);
       });
   };
+
   return (
     <div className="  h-screen w-full  grid grid-cols-12 overflow-hidden">
       <div className="col-span-12 md:col-span-6 lg:col-span-4 border-r-2  p-5 md:p-10">
@@ -68,7 +80,11 @@ const Signin = () => {
           </Link>
           <p className="text-xs mr-5 text-right">
             Don't have an account ?{" "}
-            <Link to={"/signup"} className="text-primary_Colors font-bold">
+            <Link
+              to={"/signup"}
+              state={{ from: location.state?.from }}
+              className="text-primary_Colors font-bold"
+            >
               SignUp
             </Link>
           </p>
@@ -93,11 +109,17 @@ const Signin = () => {
             type="password"
             className="outline-none border border-black w-full mb-5 p-3 rounded-md "
           ></input>
-          <input
+          <button
             className="w-full text-xl font-cinzel font-bold bg-primary_Colors p-3 rounded-full text-white hover:bg-opacity-90 cursor-pointer"
             type="submit"
-            value="Signin"
-          />
+          >
+            {" "}
+            {lodingIcon ? (
+              <FiRefreshCcw className="animate-spin mx-auto" />
+            ) : (
+              "Signup"
+            )}
+          </button>
         </form>
         <div className="flex gap-5 my-10 items-center">
           <div className="border-2 flex-1"></div>
@@ -112,7 +134,14 @@ const Signin = () => {
             className="flex items-center gap-5 border px-4 py-2 text-xl font-bold rounded-md hover:bg-primary_Colors  hover:text-white duration-500 cursor-pointer w-full text-center justify-center"
           >
             <FaGoogle className=" text-3xl"></FaGoogle>
-            <h1>Google</h1>
+            <h1>
+              {" "}
+              {lodingIconMidea ? (
+                <FiRefreshCcw className="animate-spin mx-auto" />
+              ) : (
+                "Google"
+              )}
+            </h1>
           </div>
 
           <div className="flex items-center gap-5 border px-4 py-2 text-xl font-bold rounded-md hover:bg-primary_Colors  hover:text-white duration-500 cursor-pointer w-full text-center justify-center">

@@ -1,18 +1,22 @@
 import { useForm } from "react-hook-form";
 
 import loginimage from "../../assets/Images/login.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { FiRefreshCcw } from "react-icons/fi";
 
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useState } from "react";
 const image_hosting_ky = import.meta.env.VITE_HOSTING_IMGBB_KEY;
 const img_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ky}`;
 const SignUp = () => {
   const { createUser, updateUser } = useAuth();
   const axios = useAxiosPublic();
+  const [lodingIcon, setLodingIcon] = useState(false);
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  console.log(location?.state?.from);
   const {
     register,
     handleSubmit,
@@ -20,6 +24,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    setLodingIcon(true);
     const email = data?.email;
     const password = data?.password;
     const image = { image: data.image[0] };
@@ -49,7 +54,8 @@ const SignUp = () => {
                 .catch((err) => {
                   console.log(err);
                 });
-              navigate("/");
+              setLodingIcon(false);
+              navigate(location?.state?.from ? location?.state?.from : "/");
             })
             .catch();
         })
@@ -120,11 +126,16 @@ const SignUp = () => {
             type="file"
             className="file-input  file-input-bordered border-black w-full mb-5 p-3 rounded-md outline-none "
           />
-          <input
+          <button
             className="w-full text-xl font-cinzel font-bold bg-primary_Colors p-3 rounded-full text-white hover:bg-opacity-90 cursor-pointer"
             type="submit"
-            value="Signup"
-          />
+          >
+            {lodingIcon ? (
+              <FiRefreshCcw className="animate-spin mx-auto" />
+            ) : (
+              "Signup"
+            )}
+          </button>
         </form>
       </div>
       <div className="hidden md:block md:col-span-6 lg:col-span-8">

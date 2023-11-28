@@ -17,6 +17,8 @@ import Surveys from "../Pages/Surveys/Surveys";
 import AddSurvey from "../Deshbord/Surveyor/AddSurvey";
 import MySurveys from "../Deshbord/Surveyor/MySurveys";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
+import AdminUser from "../Deshbord/Admin/AdminUser";
+import Allsurvey from "../Deshbord/Admin/Allsurvey";
 
 const Routes = createBrowserRouter([
   {
@@ -61,6 +63,15 @@ const Routes = createBrowserRouter([
       {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      // admin deshbord
+      {
+        path: "alluserslist",
+        element: <AdminUser></AdminUser>,
+      },
+      {
+        path: "adminsurveys",
+        element: <Allsurvey></Allsurvey>,
       },
       // user Deshbord
 

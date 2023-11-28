@@ -14,6 +14,9 @@ const SurveyCard = ({ survey }) => {
     image,
     title,
     author,
+    comment_box,
+    like,
+    disLike,
   } = survey || {};
 
   const sortDiscription = discription.slice(0, 100);
@@ -58,11 +61,11 @@ const SurveyCard = ({ survey }) => {
           <div className="flex items-center gap-3 text-2xl">
             <div className="flex items-center gap-2 font-bold">
               <BiSolidLike className="cursor-pointer " />
-              <p className="text-sm">1.5k</p>
+              <p className="text-sm">{like}</p>
             </div>
             <div className="flex items-center gap-2 font-bold">
               <BiSolidDislike className="cursor-pointer " />
-              <p className="text-sm">1k</p>
+              <p className="text-sm">{disLike}</p>
             </div>
           </div>
           <div className="relative md:block hidden">
@@ -78,18 +81,16 @@ const SurveyCard = ({ survey }) => {
           </div>
         </Link>
         <div className="h-32 overflow-y-scroll p-5 ">
-          <div className="flex gap-5">
-            <div className="avatar">
-              <div className="w-12 h-12 rounded-full">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          {comment_box?.map((com, indxx) => (
+            <div key={indxx} className="flex gap-5 my-5">
+              <div className="avatar">
+                <div className="w-12 h-12 rounded-full">
+                  <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
               </div>
+              <h2 className="border p-2 rounded-xl text-xs">{com}</h2>
             </div>
-            <h2 className="border p-2 rounded-xl text-xs">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              molestias sequi quisquam, deleniti doloribus debitis ab saepe
-              eveniet
-            </h2>
-          </div>
+          ))}
         </div>
       </div>
     </div>

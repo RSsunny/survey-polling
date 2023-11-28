@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { FiRefreshCcw } from "react-icons/fi";
 const PaymentCard = () => {
   const { user } = useAuth() || {};
   const navigate = useNavigate();
-
+  const [lodingIcon, setlodingIcon] = useState(false);
   const axios = useAxiosPublic();
   const stripe = useStripe();
   const elements = useElements();
@@ -23,7 +24,8 @@ const PaymentCard = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    setlodingIcon(true);
+
     if (!stripe || !elements) {
       setCaerdError("somthing wrong..!");
       return;
@@ -64,6 +66,7 @@ const PaymentCard = () => {
         .patch(`/api/v1/users/${user?.email}`, userinfo)
         .then((res) => {
           console.log(res.data);
+          setlodingIcon(false);
         })
         .catch((err) => {
           console.log(err);
@@ -136,21 +139,20 @@ const PaymentCard = () => {
         }}
       />
 
-      <input
+      <button
         className="w-full text-xl font-cinzel font-bold bg-primary_Colors p-3 rounded-full text-white hover:bg-opacity-90 cursor-pointer"
-        type="submit"
-        value="Pay"
         disabled={!stripe}
-      />
-      {cardError && (
-        <p className="text-xs text-red-500 mt-2 text-primary_Colors">
-          {cardError}
-        </p>
-      )}
+      >
+        {" "}
+        {lodingIcon ? (
+          <FiRefreshCcw className="animate-spin mx-auto" />
+        ) : (
+          "Subscribe"
+        )}
+      </button>
+      {cardError && <p className="text-xs text-red-500 mt-2 ">{cardError}</p>}
       {success && (
-        <p className="text-xs text-red-500 mt-2 text-primary_Colors">
-          {success}
-        </p>
+        <p className="text-xs  mt-2 text-primary_Colors">{success}</p>
       )}
     </form>
   );
