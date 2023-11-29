@@ -21,6 +21,7 @@ const AllsurveyCard = ({ items }) => {
     voteCount,
     voterEmail,
   } = items;
+
   return (
     <div className="flex flex-col md:flex-row gap-10 px-2 md:px-0">
       <div className="h-[300px] md:w-[400px]">
@@ -48,7 +49,7 @@ const AllsurveyCard = ({ items }) => {
           <h1 className=" my-5  md:w-[500px]">Title : {discription}</h1>
         </div>
       </div>
-      <div>
+      <div className="w-64">
         <h1 className=" font-bold">Total Vote : {voteCount}</h1>
       </div>
     </div>

@@ -19,6 +19,11 @@ import MySurveys from "../Deshbord/Surveyor/MySurveys";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 import AdminUser from "../Deshbord/Admin/AdminUser";
 import Allsurvey from "../Deshbord/Admin/Allsurvey";
+import AdminStatic from "../Deshbord/Admin/AdminStatic";
+import AdminResults from "../Deshbord/Admin/AdminResults";
+import AdminSetting from "../Deshbord/Admin/AdminSetting";
+import AdminRoute from "../Private/AdminRoute";
+import SurveyorRoute from "../Private/SurveyorRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -67,11 +72,43 @@ const Routes = createBrowserRouter([
       // admin deshbord
       {
         path: "alluserslist",
-        element: <AdminUser></AdminUser>,
+        element: (
+          <AdminRoute>
+            <AdminUser></AdminUser>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminstatics",
+        element: (
+          <AdminRoute>
+            <AdminStatic></AdminStatic>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminresults",
+        element: (
+          <AdminRoute>
+            <AdminResults></AdminResults>
+          </AdminRoute>
+        ),
       },
       {
         path: "adminsurveys",
-        element: <Allsurvey></Allsurvey>,
+        element: (
+          <AdminRoute>
+            <Allsurvey></Allsurvey>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminsettings",
+        element: (
+          <AdminRoute>
+            <AdminSetting></AdminSetting>
+          </AdminRoute>
+        ),
       },
       // user Deshbord
 
@@ -96,7 +133,11 @@ const Routes = createBrowserRouter([
       // surveyor desbord
       {
         path: "addsurvey",
-        element: <AddSurvey></AddSurvey>,
+        element: (
+          <SurveyorRoute>
+            <AddSurvey></AddSurvey>
+          </SurveyorRoute>
+        ),
       },
       {
         path: "surveyersurveys",

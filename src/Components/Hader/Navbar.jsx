@@ -53,7 +53,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-5">
           {/* Icon social */}
 
-          <Icons></Icons>
+          <div className="md:hidden lg:block">
+            <Icons></Icons>
+          </div>
 
           {/* login */}
           <Link

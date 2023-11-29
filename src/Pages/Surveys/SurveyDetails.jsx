@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Container from "../../Shared/Container";
 import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
 import { FaEye, FaRegCommentDots } from "react-icons/fa";
 import { Progress } from "../../Utility/MaterialClass";
 import { HiOutlinePaperAirplane } from "react-icons/hi2";
+import { TiArrowBackOutline } from "react-icons/ti";
+
 import { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import useAuth from "../../Hooks/useAuth";
@@ -16,6 +18,7 @@ import { MdPublishedWithChanges } from "react-icons/md";
 import VoteCount1 from "../../Components/Vote/VoteCount1";
 import VoteCountTwo from "../../Components/Vote/VoteCountTwo";
 import VoteThree from "../../Components/Vote/VoteThree";
+import { TbMessageReport } from "react-icons/tb";
 
 const SurveyDetails = () => {
   //  date...................
@@ -36,8 +39,12 @@ const SurveyDetails = () => {
   // like/ dislike -------------
   const [disCount, setDisCount] = useState(false);
   const [count, setCount] = useState(false);
-  //  -----------------------------
 
+  //  -----------------------------
+  //Report ------------------
+  const [reportuser, setReport] = useState(false);
+  const [messagerepo, setMessage] = useState("");
+  const [feedback, setFedback] = useState("");
   // hooks....................
   const axios = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -71,7 +78,39 @@ const SurveyDetails = () => {
     consumer_vote = [],
     voteCount,
     voterEmail = [],
+    reportMessage: repo = [],
   } = data || {};
+
+  //report.............
+  console.log(reportuser);
+  const handleReport = (report) => {
+    setReport(!reportuser);
+  };
+
+  const handleReportMessage = (message) => {
+    setMessage(message.target.value);
+  };
+
+  const handleSubmitRepo = async () => {
+    const value = messagerepo;
+    const reportinfo = {
+      message: value,
+      email: user?.email,
+      title: title,
+      postId: _id,
+      img_repo: image,
+    };
+    const reportMessage = [reportinfo, ...repo];
+    console.log(reportMessage);
+    const res = await axios.patch(`/api/v1/surveyreport/${_id}`, {
+      reportMessage,
+    });
+    setReport(!reportuser);
+    if (res?.data?.message === "success") {
+      setFedback("thank you for your feedback");
+    }
+  };
+
   //Extremely Important
   const { parsentageimportant, parsentagemidume, parsentagelow } =
     VoteCount1(id) || {};
@@ -240,7 +279,16 @@ const SurveyDetails = () => {
 
   return (
     <Container>
-      <div className="border rounded-xl  md: p-5 my-20">
+      <div className="my-10  font-bold font-cinzel rounded-md flex">
+        <Link
+          to={-1}
+          className="flex items-center gap-3 border px-6 py-2 rounded-md hover:bg-primary_Colors hover:text-white hover:animate-pulse"
+        >
+          <TiArrowBackOutline className="text-2xl" />
+          <p>Back</p>
+        </Link>
+      </div>
+      <div className="border rounded-xl  md: p-5 mb-20">
         {/* author */}
         <div className="flex  justify-between ">
           <div className="flex items-center gap-5 mb-10">
@@ -258,7 +306,7 @@ const SurveyDetails = () => {
           <div className="mt-5 mr-5 font-bold">Total Vote : {voteCount} </div>
         </div>
         {/* image and chart */}
-        <div className="md:flex gap-10 ">
+        <div className="md:flex gap-10 relative">
           <div className="flex-1">
             <img src={image} className="rounded-xl w-full" alt="" />
             <div className="flex items-center justify-between md:px-5 py-5 border-b">
@@ -325,8 +373,25 @@ const SurveyDetails = () => {
           </div>
           {/* chart */}
           <div className="flex-1 border rounded-xl p-5 my-20 md:my-0">
-            <h2 className="my-2 text-center  font-bold">Chart</h2>
-            {day <= 0 ? (
+            <div
+              className={feedback ? "flex justify-end mr-10 -mt-2" : "hidden"}
+            >
+              <h1 className="text-xs text-primary_Colors "> {feedback}</h1>
+            </div>
+            <div className={`relative ${reportuser ? "block" : "hidden"}`}>
+              <textarea
+                onChange={handleReportMessage}
+                name="repo"
+                className={` border w-full mr-10 outline-none rounded-2xl  mt-5 p-2 text-xs `}
+                placeholder="Report......."
+              ></textarea>
+              <HiOutlinePaperAirplane
+                onClick={handleSubmitRepo}
+                className="text-xl text-green absolute right-3 bottom-3 cursor-pointer"
+              />
+            </div>
+            <h2 className="my-5 text-center  font-bold">Chart</h2>
+            {day < 0 ? (
               <h1 className="text-xl font-bold text-center my-8  font-cinzel">
                 final result
               </h1>
@@ -338,7 +403,7 @@ const SurveyDetails = () => {
                 <ProgressBar className=" w-3/4 flex-1" completed={100 - day} />
               </div>
             )}
-            {day >= 0 && (
+            {day < 0 && (
               <>
                 {/* one */}
                 <div className="">
@@ -448,7 +513,7 @@ const SurveyDetails = () => {
               </>
             )}
             {/* vote */}
-            {day >= 0 ? (
+            {day < 0 ? (
               ""
             ) : matchVoterEmail ? (
               <div className="mt-20 md:mt-40">
@@ -588,6 +653,12 @@ const SurveyDetails = () => {
               </>
             )}
           </div>
+          <TbMessageReport
+            onClick={() => handleReport(true)}
+            className={`absolute top-3 right-5 text-xl cursor-pointer ${
+              reportuser && "text-primary_Colors"
+            }`}
+          />
         </div>
         {/* details information */}
         <div className="my-20 ">

@@ -2,6 +2,7 @@ import { FaEye } from "react-icons/fa";
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import VoteCount1 from "../Vote/VoteCount1";
 
 const SurveyCard = ({ survey }) => {
   const {
@@ -17,6 +18,7 @@ const SurveyCard = ({ survey }) => {
     comment_box,
     like,
     disLike,
+    voteCount,
   } = survey || {};
 
   const sortDiscription = discription.slice(0, 100);
@@ -41,7 +43,7 @@ const SurveyCard = ({ survey }) => {
             className="flex items-center gap-2 font-bold"
           >
             <p>Vote:</p>
-            <h5>1.6k</h5>
+            <h5>{voteCount}</h5>
           </Link>
         </div>
         <div className="p-5">

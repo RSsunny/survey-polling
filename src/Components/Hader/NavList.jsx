@@ -51,6 +51,19 @@ const NavList = () => {
       >
         Contact Us
       </NavLink>
+
+      <NavLink
+        to="/helpcenter"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : ""
+        }
+      >
+        Help Center
+      </NavLink>
     </>
   );
 };
