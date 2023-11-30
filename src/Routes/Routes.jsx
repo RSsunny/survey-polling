@@ -27,6 +27,7 @@ import SurveyorRoute from "../Private/SurveyorRoute";
 import SurveyorStatics from "../Deshbord/Surveyor/SurveyorStatics";
 import SurveyorResults from "../Deshbord/Surveyor/SurveyorResults";
 import UpdateSurvey from "../Deshbord/Surveyor/UpdateSurvey";
+import Aboute from "../Pages/About/Aboute";
 
 const Routes = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const Routes = createBrowserRouter([
         path: "surveydetails/:id",
 
         element: <SurveyDetails></SurveyDetails>,
+      },
+      {
+        path: "about",
+        element: <Aboute></Aboute>,
       },
     ],
   },

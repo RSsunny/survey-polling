@@ -15,6 +15,7 @@ const Surveys = () => {
   const [colors, setColors] = useState("");
 
   const handleMostVote = async (vote) => {
+    setSelectedValue(vote?.target?.value);
     if (vote === "most") {
       setColors("most");
     } else {
@@ -108,7 +109,7 @@ const Surveys = () => {
               <option value="Environmental Awareness">
                 Environmental Awareness
               </option>
-              <option value="Marge">Marge</option>
+              <option value="Tech and Innovation">Tech and Innovation</option>
             </select>
           </div>
         </div>

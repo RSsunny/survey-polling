@@ -35,7 +35,8 @@ const Navbar = () => {
       className={` md:py-5  w-full z-50  ${
         locattion?.pathname === "/" ||
         locattion?.pathname === "/subscribe" ||
-        locattion?.pathname === "/payment"
+        locattion?.pathname === "/payment" ||
+        locattion?.pathname === "/about"
           ? "text-white"
           : ""
       }  duration-1000 ease-linear    ${
