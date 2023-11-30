@@ -28,6 +28,8 @@ import SurveyorStatics from "../Deshbord/Surveyor/SurveyorStatics";
 import SurveyorResults from "../Deshbord/Surveyor/SurveyorResults";
 import UpdateSurvey from "../Deshbord/Surveyor/UpdateSurvey";
 import Aboute from "../Pages/About/Aboute";
+import Contact from "../Pages/Contact/Contact";
+import HelpCenter from "../Pages/helpCenter/HelpCenter";
 
 const Routes = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ const Routes = createBrowserRouter([
       {
         path: "about",
         element: <Aboute></Aboute>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "helpcenter",
+        element: <HelpCenter></HelpCenter>,
       },
     ],
   },
