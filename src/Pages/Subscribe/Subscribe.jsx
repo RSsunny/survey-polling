@@ -4,9 +4,8 @@ import { MdVerifiedUser } from "react-icons/md";
 
 import image from "../../assets/Images/subscribe.png";
 import { Link } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
+
 const Subscribe = () => {
-  const { user } = useAuth();
   return (
     <div
       className="flex flex-col lg:flex-row justify-between items-center gap-10 bg-cover bg-center min-h-screen -mt-24 z-10 pt-52 lg:pt-24 md:px-10 lg:px-32 pb-10 lg:pb-0"

@@ -52,7 +52,7 @@ const SurveyDetails = () => {
   const { user } = useAuth();
   const { roll } = useUserRoll();
   const navigate = useNavigate();
-
+  console.log(user);
   // lode data......
   const { data, refetch } = useQuery({
     queryKey: ["surveyDetails"],
@@ -276,7 +276,7 @@ const SurveyDetails = () => {
     const parsentige = parseInt((dayRemaing / dayDeffernce) * 100);
     setDay(parsentige);
   }, [date, expired_date]);
-
+  console.log(day);
   return (
     <Container>
       <div className="my-10  font-bold font-cinzel rounded-md flex">
@@ -391,10 +391,15 @@ const SurveyDetails = () => {
               />
             </div>
             <h2 className="my-5 text-center  font-bold">Chart</h2>
-            {day < 0 ? (
-              <h1 className="text-xl font-bold text-center my-8  font-cinzel">
-                final result
-              </h1>
+            {day <= 0 ? (
+              <>
+                <h1 className="text-2xl font-bold text-center mt-8  font-cinzel">
+                  final result
+                </h1>
+                <h1 className=" font-bold text-center mb-8  ">
+                  Total Vote : {voteCount}
+                </h1>
+              </>
             ) : (
               <div className="flex items-center gap-3 mb-10">
                 <p className="text-xs lg:text-sm font-bold w-1/4">
@@ -403,7 +408,7 @@ const SurveyDetails = () => {
                 <ProgressBar className=" w-3/4 flex-1" completed={100 - day} />
               </div>
             )}
-            {day < 0 && (
+            {day <= 0 && (
               <>
                 {/* one */}
                 <div className="">
@@ -513,7 +518,7 @@ const SurveyDetails = () => {
               </>
             )}
             {/* vote */}
-            {day < 0 ? (
+            {day <= 0 ? (
               ""
             ) : matchVoterEmail ? (
               <div className="mt-20 md:mt-40">

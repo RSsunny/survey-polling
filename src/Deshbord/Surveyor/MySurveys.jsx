@@ -1,20 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Container from "../../Shared/Container";
 import MySurveyCard from "../../Components/Surveyor/MySurveyCard";
+import useSurveySurveyor from "../../Hooks/useSurveySurveyor";
 
 const MySurveys = () => {
-  const axios = useAxiosSecure();
-  const { user } = useAuth();
-  const { data } = useQuery({
-    queryKey: [MySurveys],
-    queryFn: async () => {
-      const res = await axios(`/api/v1/mysurvey?email=${user?.email}`);
-      return res.data;
-    },
-  });
-  console.log(data);
+  const { data, refetch } = useSurveySurveyor() || {};
 
   return (
     <Container>
@@ -34,6 +24,8 @@ const MySurveys = () => {
                 <th>Total vote</th>
                 <th>Time Distance</th>
                 <th>Voter</th>
+                <th>Update</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -42,6 +34,7 @@ const MySurveys = () => {
                   key={survey._id}
                   indx={indx}
                   survey={survey}
+                  refetchdata={refetch}
                 ></MySurveyCard>
               ))}
             </tbody>

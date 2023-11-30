@@ -24,6 +24,9 @@ import AdminResults from "../Deshbord/Admin/AdminResults";
 import AdminSetting from "../Deshbord/Admin/AdminSetting";
 import AdminRoute from "../Private/AdminRoute";
 import SurveyorRoute from "../Private/SurveyorRoute";
+import SurveyorStatics from "../Deshbord/Surveyor/SurveyorStatics";
+import SurveyorResults from "../Deshbord/Surveyor/SurveyorResults";
+import UpdateSurvey from "../Deshbord/Surveyor/UpdateSurvey";
 
 const Routes = createBrowserRouter([
   {
@@ -113,7 +116,7 @@ const Routes = createBrowserRouter([
       // user Deshbord
 
       {
-        path: "statics",
+        path: "userstatics",
         element: <UserStatics></UserStatics>,
       },
       {
@@ -142,6 +145,32 @@ const Routes = createBrowserRouter([
       {
         path: "surveyersurveys",
         element: <MySurveys></MySurveys>,
+      },
+      {
+        path: "surveyorstatics",
+        element: (
+          <SurveyorRoute>
+            {" "}
+            <SurveyorStatics></SurveyorStatics>
+          </SurveyorRoute>
+        ),
+      },
+      {
+        path: "surveyerresults",
+        element: (
+          <SurveyorRoute>
+            {" "}
+            <SurveyorResults></SurveyorResults>
+          </SurveyorRoute>
+        ),
+      },
+      {
+        path: "updatesurvey/:id",
+        element: (
+          <SurveyorRoute>
+            <UpdateSurvey></UpdateSurvey>
+          </SurveyorRoute>
+        ),
       },
     ],
   },

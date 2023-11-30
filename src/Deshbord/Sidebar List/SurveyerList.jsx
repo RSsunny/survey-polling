@@ -9,7 +9,7 @@ const SurveyerList = () => {
   return (
     <>
       <NavLink
-        to={"/deshbord/surveyerstatics"}
+        to={"/deshbord/surveyorstatics"}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"

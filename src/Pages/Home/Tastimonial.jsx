@@ -48,7 +48,7 @@ const Tastimonial = () => {
         break;
     }
   };
-  console.log(open);
+
   return (
     <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center my-40">
       <div className="flex-1">

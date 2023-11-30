@@ -1,8 +1,7 @@
 import { FaEye } from "react-icons/fa";
-import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
+import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import VoteCount1 from "../Vote/VoteCount1";
 
 const SurveyCard = ({ survey }) => {
   const {
@@ -21,7 +20,7 @@ const SurveyCard = ({ survey }) => {
     voteCount,
   } = survey || {};
 
-  const sortDiscription = discription.slice(0, 100);
+  const sortDiscription = discription.slice(0, 80);
 
   return (
     <div>
@@ -54,7 +53,9 @@ const SurveyCard = ({ survey }) => {
           </Link>
         </div>
         <Link to={`/surveydetails/${_id}`} className="h-[200px] w-full">
-          <img className="h-full w-full" src={image} alt="" />
+          <div className="h-[200px]">
+            <img className="h-full w-full" src={image} alt="" />
+          </div>
         </Link>
         <Link
           to={`/surveydetails/${_id}`}

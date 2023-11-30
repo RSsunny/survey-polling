@@ -4,7 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const VoteThree = (id) => {
   const axios = useAxiosSecure();
   const { data, refetch } = useQuery({
-    queryKey: ["surveyDetails"],
+    queryKey: ["three"],
     queryFn: async () => {
       const res = await axios(`/api/v1/survey/${id.id}`);
       return res.data;

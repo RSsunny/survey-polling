@@ -11,15 +11,30 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FiRefreshCcw } from "react-icons/fi";
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import useSingleData from "../../Hooks/useSingleData";
 
 const img_hosting_key = import.meta.env.VITE_HOSTING_IMGBB_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
-const AddSurvey = () => {
+
+const UpdateSurvey = () => {
   const [lodingsubmit, setLodingSubmit] = useState(false);
+  const navigate = useNavigate();
   const axios = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
+  const id = useParams() || {};
+  const { data: updateInfo, refatch } = useSingleData(id) || {};
 
+  const {
+    title,
+    discription,
+    summary,
+    date,
+    expired_date,
+    category,
+    image: preImage,
+  } = updateInfo || {};
   const {
     register,
     handleSubmit,
@@ -40,35 +55,29 @@ const AddSurvey = () => {
 
     const surveyinfo = {
       title: data?.title,
-      email: user?.email,
       discription: data?.description,
       summary: data?.summary,
       date: data?.date,
       expired_date: data?.expired_date,
       category: data?.category,
       image,
-      author: {
-        author_image: user.photoURL,
-        author_name: user.displayName,
-      },
     };
-    const res = await axios.post("/api/v1/survey", surveyinfo);
+    const res = await axios.patch(`/api/v1/survey/${id.id}`, surveyinfo);
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "survey add complete",
+      title: "survey update complete",
       showConfirmButton: false,
       timer: 1500,
     });
     setLodingSubmit(false);
-    reset();
-    console.log(res.data);
+    navigate("/deshbord/surveyersurveys");
   };
 
   return (
     <div>
       <h1 className="text-4xl font-cinzel font-bold text-center my-20">
-        Shape the <span className="text-primary_Colors">Feature</span> Survey
+        update <span className="text-primary_Colors">past</span> Survey
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -81,6 +90,7 @@ const AddSurvey = () => {
           </div>
           <input
             {...register("title", { required: true })}
+            defaultValue={title}
             type="text"
             className="w-full border outline-none border-black p-2 rounded-md "
             placeholder="Title ..."
@@ -93,6 +103,7 @@ const AddSurvey = () => {
           </div>
           <textarea
             {...register("description", { required: true })}
+            defaultValue={discription}
             type="text"
             className="w-full border outline-none border-black p-2 rounded-md "
             placeholder="Description ..."
@@ -106,6 +117,7 @@ const AddSurvey = () => {
           </div>
           <textarea
             {...register("summary", { required: true })}
+            defaultValue={summary}
             type="text"
             className="w-full border outline-none border-black p-2 rounded-md "
             placeholder="Summary ..."
@@ -121,6 +133,7 @@ const AddSurvey = () => {
             {" "}
             <input
               {...register("category", { required: true })}
+              defaultValue={category}
               type="text"
               className="w-full border outline-none border-black p-2 rounded-md "
               placeholder="Category ..."
@@ -135,6 +148,7 @@ const AddSurvey = () => {
           </div>
           <input
             {...register("date", { required: true })}
+            defaultValue={date}
             type="date"
             name="date"
             className="border  py-2 px-4 rounded-md border-black "
@@ -148,6 +162,7 @@ const AddSurvey = () => {
           </div>
           <input
             {...register("expired_date", { required: true })}
+            defaultValue={expired_date}
             type="date"
             name="expired_date"
             className="border  py-2 px-4 rounded-md border-black "
@@ -169,7 +184,7 @@ const AddSurvey = () => {
 
         <button className="btn mt-10 font-bold font-cinzel" type="submit">
           {lodingsubmit ? (
-            <FiRefreshCcw className="animate-spin mx-auto " />
+            <FiRefreshCcw className="animate-spin mx-auto w-12" />
           ) : (
             <span>Submit</span>
           )}
@@ -185,4 +200,4 @@ const AddSurvey = () => {
   );
 };
 
-export default AddSurvey;
+export default UpdateSurvey;

@@ -6,11 +6,12 @@ import { FaCircleUser } from "react-icons/fa6";
 import Icons from "../../Utility/Icons";
 import useAuth from "../../Hooks/useAuth";
 import Dawer from "../Drawer/Dawer";
+import useUserRoll from "../../Hooks/useUserRoll";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const locattion = useLocation();
   const { user } = useAuth() || {};
-
+  const { roll } = useUserRoll();
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
     window.scrollTimeout = setTimeout(() => {
@@ -38,7 +39,7 @@ const Navbar = () => {
           ? "text-white"
           : ""
       }  duration-1000 ease-linear    ${
-        issticky ? "sticky bg-gray-200 bg-opacity-10   top-0  " : "sticky"
+        issticky ? "sticky bg-gray-300 bg-opacity-30   top-0  " : "sticky"
       }`}
     >
       <div className="flex justify-between items-center md:px-10  lg:px-20">
@@ -46,7 +47,7 @@ const Navbar = () => {
           Sur<span className="text-primary_Colors text-3xl md:text-5xl">v</span>
           ey
         </h1>
-        <div className="md:flex  gap-5 text-sm font-medium hidden ">
+        <div className="md:flex  gap-5 text-sm lg:text-base  font-bold hidden ">
           {/* navLink */}
           <NavList></NavList>
         </div>
@@ -73,7 +74,7 @@ const Navbar = () => {
 
           {/* deshbord */}
           <Link
-            to={"/deshbord/statics"}
+            to={`/deshbord/${roll}statics`}
             className="bg-primary_Colors text-white font-medium font-cinzel  px-4 py-2  rounded-md"
           >
             Deshbord

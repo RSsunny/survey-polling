@@ -1,3 +1,4 @@
+import useSurveySurveyor from "../../Hooks/useSurveySurveyor";
 import {
   BarChart,
   Bar,
@@ -21,11 +22,11 @@ const getPath = (x, y, width, height) => {
   return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${
     y + height / 3
   }
-  ${x + width / 2}, ${y}
-  C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${
+    ${x + width / 2}, ${y}
+    C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${
     x + width
   }, ${y + height}
-  Z`;
+    Z`;
 };
 const TriangleBar = (props) => {
   const { fill, x, y, width, height } = props;
@@ -33,8 +34,8 @@ const TriangleBar = (props) => {
   return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
 };
 
-const AdminStatic = () => {
-  const { data } = useAllSurvey();
+const SurveyorStatics = () => {
+  const { data, refetch } = useSurveySurveyor() || {};
 
   const chartinfo = data?.map((item) => {
     return {
@@ -92,4 +93,4 @@ const AdminStatic = () => {
   );
 };
 
-export default AdminStatic;
+export default SurveyorStatics;
