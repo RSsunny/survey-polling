@@ -1,8 +1,13 @@
-# React + Vite
+## Assignment Category: assignment12_category_0019
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Link : https://marvelous-squirrel-2e9a26.netlify.app/
 
-Currently, two official plugins are available:
+# Survey and Polling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- dynamic polling and survey related website User experience mast better
+- user can be like this page and comment survey post
+- only poro user can write comment and survey vote participate
+- The survey post will show its results when the date is over for all users to see
+- Method Apply or Pro User at Payment Gate (Strip)
+
+##### Created site four times with Express GS faced various issues with user interface especially like comment bot show and dynamic picture and data loaded system
