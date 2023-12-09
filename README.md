@@ -4,6 +4,16 @@
 
 # Survey and Polling
 
+# technology
+- TanstacQuery
+- Axios (intersepteor)
+- Payment Gatway
+- Strip
+- react-hook-from
+- AOS
+- Material Tailwind
+
+# feature
 - dynamic polling and survey related website User experience mast better
 - user can be like this page and comment survey post
 - only poro user can write comment and survey vote participate
