@@ -12,6 +12,7 @@
 - react-hook-from
 - AOS
 - Material Tailwind
+- Firebase
 
 # feature
 - dynamic polling and survey related website User experience mast better
