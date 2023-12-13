@@ -1,4 +1,3 @@
-## Assignment Category: assignment12_category_0019
 
 ### Live Link : https://marvelous-squirrel-2e9a26.netlify.app/
 
